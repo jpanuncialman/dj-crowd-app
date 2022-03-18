@@ -1,16 +1,19 @@
 import logo from './logo.svg';
-import { useEffect } from 'react';
-import './App.css';
+import Body from './Body';
+import { useEffect, useState } from 'react';
+import './App.scss';
 
 function App() {
-
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers', {
-      method: "GET",
-
-    })
+    fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers')
     .then(response => {
-        console.log("RESPONSE: ", response)
+      console.log("RESPONSE1: ", response)
+        return response.json()
+    })
+    .then(responseJson => {
+      console.log("RESPONSE: ", responseJson)
+      setUsers(responseJson.users);
     })
     .catch(error => {
         // handle the error
@@ -20,7 +23,11 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <header className="App-header">
+      
+
+        {users.map(u => ({...u, imgId: getRandomIntForImg(4), xPos: getRandomPercent(), delayId: getRandomIntForImg(4), animateId: getRandomIntForImg(2)})).map(u => <Body user={u} />)}
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -33,9 +40,17 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
+}
+
+const getRandomIntForImg = (max) => {
+  return Math.floor(Math.random() * max);
+}
+
+const getRandomPercent = () => {
+  return Math.floor(Math.random() * 90) + 1 + '%'
 }
 
 export default App;
