@@ -5,12 +5,9 @@ import './App.css';
 function App() {
 
   useEffect(() => {
-    fetch('https://api.twitch.tv/helix/users?login=bubucore69', {
+    fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers', {
       method: "GET",
-      headers: {
-        "Client-ID": "e4d8gb8osi3kbahha86mf1hajtzy8e",
-        "Authorization": "Bearer w25plakq3zpltlyd2dyb1b0zrko53z"
-      }
+
     })
     .then(response => {
         console.log("RESPONSE: ", response)
