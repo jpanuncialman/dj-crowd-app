@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import Body from './Body';
 import { useEffect, useState } from 'react';
 import './App.scss';

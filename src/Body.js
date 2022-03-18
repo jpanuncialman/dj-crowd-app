@@ -13,8 +13,8 @@ const Body = ({user}) => {
             <div style={{"left": user.xPos}} className={`body animation-${user.animateId} delay-${user.delayId}`}>
                 <div  className="body-image-container">
                     <p className="body-name">{user.username}</p>
-                    <img className="body-head" src={user.image} />
-                    <img className="body-image" src={imgMap[user.imgId]} />                
+                    <img className="body-head" src={user.image} alt="head"/>
+                    <img className="body-image" src={imgMap[user.imgId]} alt="body"/>                
                 </div>
             </div>
         )}
