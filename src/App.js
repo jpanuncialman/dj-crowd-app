@@ -4,19 +4,25 @@ import './App.scss';
 
 function App() {
   const [users, setUsers] = useState([]);
+
+  const callDatabase = () => {
+    fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers')
+        .then(response => {
+            return response.json()
+        })
+        .then(responseJson => {
+          setUsers(responseJson.users);
+        })
+        .catch(error => {
+            // handle the error
+            console.log(error)
+        });
+  }
+  
   useEffect(() => {
+    callDatabase();
     const apiCallInterval = setInterval(() => {
-      fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers')
-      .then(response => {
-          return response.json()
-      })
-      .then(responseJson => {
-        setUsers(responseJson.users);
-      })
-      .catch(error => {
-          // handle the error
-          console.log(error)
-      });
+      callDatabase();
     }, 300000);
 
     return () => clearInterval(apiCallInterval);
@@ -52,5 +58,7 @@ const getRandomIntForImg = (max) => {
 const getRandomPercent = () => {
   return Math.floor(Math.random() * 75) + 1 + '%'
 }
+
+
 
 export default App;
