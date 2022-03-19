@@ -5,20 +5,21 @@ import './App.scss';
 function App() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers')
-    .then(response => {
-      console.log("RESPONSE1: ", response)
-        return response.json()
-    })
-    .then(responseJson => {
-      console.log("RESPONSE: ", responseJson)
-      setUsers(responseJson.users);
-    })
-    .catch(error => {
-        // handle the error
-        console.log(error)
-    });
+    const apiCallInterval = setInterval(() => {
+      fetch('https://us-central1-dj-crowd-app.cloudfunctions.net/getAllUsers')
+      .then(response => {
+          return response.json()
+      })
+      .then(responseJson => {
+        setUsers(responseJson.users);
+      })
+      .catch(error => {
+          // handle the error
+          console.log(error)
+      });
+    }, 300000);
 
+    return () => clearInterval(apiCallInterval);
   }, [])
   return (
     <div className="App">
