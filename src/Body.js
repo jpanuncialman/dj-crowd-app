@@ -70,7 +70,7 @@ const BodyContainer = styled.div`
     position: absolute;
         
     &.animation-0 {
-        animation: ${({xPos}) => moveBackForth(xPos)} ${Math.random() < 0.5 ? "17" : "20"}s infinite, smolMoveUpDown 5s infinite, bopBackForth 10s infinite;
+        animation: ${({xPos}) => moveBackForth(xPos)} ${Math.random() < 0.5 ? "17" : "20"}s infinite, ${smolMoveUpDown} 5s infinite, ${bopBackForth} 10s infinite;
     }
 
     &.animation-1 {
