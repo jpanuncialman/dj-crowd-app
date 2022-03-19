@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       
 
-        {users.map(u => ({...u, imgId: getRandomIntForImg(4), xPos: getRandomPercent(), delayId: getRandomIntForImg(4), animateId: getRandomIntForImg(2)})).map(u => <Body user={u} />)}
+        {users.map(u => ({...u, imgId: getRandomIntForImg(6), xPos: getRandomPercent(), delayId: getRandomIntForImg(4), animateId: getRandomIntForImg(3)})).map(u => <Body user={u} />)}
 
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -49,7 +49,7 @@ const getRandomIntForImg = (max) => {
 }
 
 const getRandomPercent = () => {
-  return Math.floor(Math.random() * 90) + 1 + '%'
+  return Math.floor(Math.random() * 75) + 1 + '%'
 }
 
 export default App;

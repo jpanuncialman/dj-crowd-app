@@ -1,4 +1,32 @@
 /*** ANIMATION ***/
+@keyframes moveBackForth {
+    0% {
+        left: 20%;
+    }
+
+    50% {
+        left: 75%;
+    }
+
+    100% {
+        left: 20%;
+    }
+}
+
+@keyframes smolMoveUpDown {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 20px;
+    }
+
+    100% {
+        top: 0px;
+    }
+}
+
 @keyframes moveUpDown {
     0% {
         top: 0;
@@ -32,12 +60,15 @@
 .body {
     position: absolute;
     
-
     &.animation-0 {
-        animation: moveUpDown 7s infinite;
+        animation: moveBackForth 17s infinite, smolMoveUpDown 5s infinite, bopBackForth 10s infinite;
     }
 
     &.animation-1 {
+        animation: moveUpDown 7s infinite;
+    }
+
+    &.animation-2 {
         animation: bopBackForth 4s infinite;
     }
 
@@ -60,17 +91,21 @@
 .body-image-container {
     position: relative;
     display: inline-flex;
-
-
   
 
 }
 
 .body-name {
     position: absolute;
-    font-weight: bold;
+    font-weight: 400;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 24px;
+    z-index: 3;
+    font-weight: bold;
+    background: black;
+    color: #fff;
+    padding: 0px 5px;
 }
 
 .body-head {
